@@ -15,3 +15,28 @@
   - if a DB crashes, it won't take another service down with it
 - db schemas can change independently
 - services might function more efficiently with a different type of db (sql vs nosql)
+
+## Communicating between services
+
+### Sync
+
+- services communicate with direct requests
+- service X makes HTTP request to service Y
+- service X doesn't need a db
+- (-)dependency between services
+  - downtime affects both
+  - dependency web can get complicated
+- (-)entire request is only as fast as the slowest request
+
+### Async
+
+- services communicate with events
+- using an Event Bus to communicate, has issues similar to Sync
+
+Create a new db from existing dbs with just the data you need
+
+- when service B updates its db, an event is emitted about the update
+- event flows into event bus and then moves to any other interested services
+- other services record that data in their db
+- (+) no dependencies on other services
+- (-) data gets duplicated
