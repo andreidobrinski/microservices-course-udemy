@@ -40,3 +40,25 @@ Create a new db from existing dbs with just the data you need
 - other services record that data in their db
 - (+) no dependencies on other services
 - (-) data gets duplicated
+
+## Docker
+
+`docker build -t username/reponame .`
+
+- Builds image
+
+`docker run username/reponame`
+
+- runs image in container
+
+`docker run -it username/reponame sh`
+
+- runs a shell inside the running image
+
+`docker ps`
+
+- shows running containers
+
+`docker logs $ID`
+
+- prints logs emitted from process
