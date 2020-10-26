@@ -59,3 +59,11 @@ Create a new db from existing dbs with just the data you need
 - after creating a k8s posts.yaml config, run `kubectl apply -f posts.yaml`
 
 `kubectl get pods`: shows running pods
+
+`kubectl exec -it podname sh`: runs shell inside pod
+
+`kubectl logs podname`: shows logs
+
+`kubectl delete pod podname`: deletes pod imperatively
+
+`kubectl describe pod podname`: gives info about podname
