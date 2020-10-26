@@ -67,3 +67,5 @@ Create a new db from existing dbs with just the data you need
 `kubectl delete pod podname`: deletes pod imperatively
 
 `kubectl describe pod podname`: gives info about podname
+
+`kubectl rollout restart deployment $depl_name`: restarts deployment
