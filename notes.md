@@ -43,31 +43,19 @@ Create a new db from existing dbs with just the data you need
 
 ## Docker
 
-`docker build -t username/reponame .`
+`docker build -t username/reponame .`: Builds image
 
-- Builds image
+`docker run username/reponame`: runs image in container
 
-`docker run username/reponame`
+`docker run -it username/reponame sh`: runs a shell inside the running image
 
-- runs image in container
+`docker ps`: shows running containers
 
-`docker run -it username/reponame sh`
-
-- runs a shell inside the running image
-
-`docker ps`
-
-- shows running containers
-
-`docker logs $ID`
-
-- prints logs emitted from process
+`docker logs $ID`: prints logs emitted from process
 
 ## Kubernetes
 
 - `cd` into k8s directory
 - after creating a k8s posts.yaml config, run `kubectl apply -f posts.yaml`
 
-`kubectl get pods`
-
-- shows running pods
+`kubectl get pods`: shows running pods
