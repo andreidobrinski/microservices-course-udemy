@@ -62,3 +62,12 @@ Create a new db from existing dbs with just the data you need
 `docker logs $ID`
 
 - prints logs emitted from process
+
+## Kubernetes
+
+- `cd` into k8s directory
+- after creating a k8s posts.yaml config, run `kubectl apply -f posts.yaml`
+
+`kubectl get pods`
+
+- shows running pods
