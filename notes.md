@@ -69,3 +69,5 @@ Create a new db from existing dbs with just the data you need
 `kubectl describe pod podname`: gives info about podname
 
 `kubectl rollout restart deployment $depl_name`: restarts deployment
+
+`kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.40.2/deploy/static/provider/cloud/deploy.yaml`: Ingress Nginx config
