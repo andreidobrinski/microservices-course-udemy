@@ -71,3 +71,8 @@ Create a new db from existing dbs with just the data you need
 `kubectl rollout restart deployment $depl_name`: restarts deployment
 
 `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.40.2/deploy/static/provider/cloud/deploy.yaml`: Ingress Nginx config
+
+Host File Update
+
+- macOS: /etc/hosts
+  add `127.0.0.1 posts.com`
