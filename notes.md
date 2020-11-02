@@ -76,3 +76,40 @@ Host File Update
 
 - macOS: /etc/hosts
   add `127.0.0.1 posts.com`
+
+## Services for GitTix (StubHub clone)
+
+- auth: sign in/up/out
+- tickets: ticket creation and editing. knows if a ticket can be updated
+- orders: order creation/editing
+- expiration: expires orders after 15 mins
+- payments: CC payments, cancellations
+
+Object types:
+
+User
+
+- name: string
+- password: string
+
+Ticket
+
+- title: string
+- price: number
+- userId: ref to user
+- orderId: ref to order
+
+Order
+
+- userId: ref to user
+- status: Created | Cancelled | AwaitingPayment | Completed
+- ticketId: ref to ticket
+- expiresAt: Date
+
+Charge
+
+- orderId: ref to order
+- status: Created | Failed | Completed
+- amount: number
+- stripeId: string
+- stripeRefundId: string
