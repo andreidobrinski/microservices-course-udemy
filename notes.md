@@ -113,3 +113,5 @@ Charge
 - amount: number
 - stripeId: string
 - stripeRefundId: string
+
+Type `thisisunsafe` into Chrome to develop with http (not s)
