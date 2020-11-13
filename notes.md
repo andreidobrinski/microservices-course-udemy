@@ -115,3 +115,5 @@ Charge
 - stripeRefundId: string
 
 Type `thisisunsafe` into Chrome to develop with http (not s)
+
+`kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf`: imperatively creates a generic jwt secret token with asdf as the string
