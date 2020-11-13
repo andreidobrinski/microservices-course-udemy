@@ -37,8 +37,7 @@ async (req: Request, res: Response) => {
   const userJwt = jwt.sign({
     id: user.id,
     email: user.email
-    // need to update 'asdf' to secure key
-  }, 'asdf');
+  }, process.env.JWT_KEY!);
 
   req.session = {
     jwt: userJwt
