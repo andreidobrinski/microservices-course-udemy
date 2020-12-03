@@ -117,3 +117,15 @@ Charge
 Type `thisisunsafe` into Chrome to develop with http (not s)
 
 `kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf`: imperatively creates a generic jwt secret token with asdf as the string
+
+NATS streaming web UI
+
+- when connected to localhost port 8222
+- localhost:8222/streaming/channels
+- add ?subs=1 to url to see subscriptions
+
+NATS args in k8s depl
+
+- hbi: how often the server makes a heartbeat request to each of its clients
+- hbt: how long each client has to respond
+- hbf: how many times the client can fail before nats assumes that the connection is dead
