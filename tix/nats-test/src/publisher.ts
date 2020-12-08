@@ -25,11 +25,15 @@ const stan = nats.connect('ticketing', 'abc', {
 //   });
 // });
 
-stan.on('connect', () => {
+stan.on('connect', async () => {
   const publisher = new TicketCreatedPublisher(stan);
-  publisher.publish({
-    id: '123',
-    title: 'concert',
-    price: 20
-  });
+  try {
+    await publisher.publish({
+      id: '123',
+      title: 'concert',
+      price: 20
+    });
+  } catch (err) {
+    console.log(err);
+  }
 });
