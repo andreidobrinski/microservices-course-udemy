@@ -129,3 +129,5 @@ NATS args in k8s depl
 - hbi: how often the server makes a heartbeat request to each of its clients
 - hbt: how long each client has to respond
 - hbf: how many times the client can fail before nats assumes that the connection is dead
+
+Only the primary service responsible for a record is responsible for incrementing the version number
