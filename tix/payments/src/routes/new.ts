@@ -21,6 +21,7 @@ router.post(
       .not()
       .isEmpty()
   ],
+  validateRequest,
   async (req: Request, res: Response) => {
     res.send({ success: true });
   }
