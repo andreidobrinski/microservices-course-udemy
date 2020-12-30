@@ -5,6 +5,7 @@ import { Order } from '../../models/order';
 import { OrderStatus } from '@course-learning-ad/common';
 import { stripe } from '../../stripe';
 
+// remove this to test stripe without mock
 jest.mock('../../stripe');
 
 const BASE_URL = '/api/payments';
@@ -89,4 +90,36 @@ it('returns a 204 with valid inputs', async () => {
   expect(chargeOptions.source).toEqual('tok_visa');
   expect(chargeOptions.amount).toEqual(20 * 100);
   expect(chargeOptions.currency).toEqual('usd');
+});
+
+it('tests stripe without mock', async () => {
+  const userId = mongoose.Types.ObjectId().toHexString();
+  const price = Math.floor(Math.random() * 100000);
+
+  const order = Order.build({
+    id: mongoose.Types.ObjectId().toHexString(),
+    userId,
+    version: 0,
+    price,
+    status: OrderStatus.Created
+  });
+
+  await order.save();
+
+  await request(app)
+    .post(BASE_URL)
+    .set('Cookie', global.signin(userId))
+    .send({
+      orderId: order.id,
+      token: 'tok_visa'
+    })
+    .expect(201);
+
+  const stripeCharges = await stripe.charges.list({ limit: 50 });
+
+  const stripeCharge = stripeCharges.data.find(charge => {
+    return charge.amount === price * 100
+  });
+
+  expect(stripeCharge).toBeDefined();
 });
