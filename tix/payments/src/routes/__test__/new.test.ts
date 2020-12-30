@@ -4,6 +4,7 @@ import { app } from '../../app';
 import { Order } from '../../models/order';
 import { OrderStatus } from '@course-learning-ad/common';
 import { stripe } from '../../stripe';
+import { Payment } from '../../models/payment';
 
 // remove this to test stripe without mock
 jest.mock('../../stripe');
@@ -122,4 +123,13 @@ it('tests stripe without mock', async () => {
   });
 
   expect(stripeCharge).toBeDefined();
+
+  const payment = await Payment.findOne({
+    orderId: order.id,
+    stripeId: stripeCharge!.id
+  });
+
+  // can't use .toBeDefined() because null evaluates to true
+  // need to make sure that payment isn't null
+  expect(payment).not.toBeNull();
 });
