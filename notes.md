@@ -157,3 +157,31 @@ jobs:
       # adding an additional run command runs them in series
       # adding an additional gh-action makes them run in parallel
 ```
+
+Action to build image
+
+```
+# deploy-auth.yaml
+
+name: deploy-auth
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'auth/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd auth && docker build -t dockerId/auth .
+      # uses gh secrets in settings
+      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      - run: docker push dockerId/auth
+```
