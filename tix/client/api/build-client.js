@@ -5,6 +5,8 @@ export default ({ req }) => {
     // request to namespace when executed from node
     return axios.create({
       baseURL: 'http://ingress-nginx.ingress-nginx.svc.cluster.local',
+      // add baseURL for prod
+      baseURL: 'http://actual-prod-domain.com',
       headers: req.headers
     })
   } else {
