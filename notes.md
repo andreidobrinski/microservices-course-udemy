@@ -139,7 +139,10 @@ Action to run tests
 ```
 name: tests
 on:
-  pull_request
+  pull_request:
+    paths:
+      - 'auth/**'
+      # only runs test when changes occur in auth directory
 
 jobs:
   build:
