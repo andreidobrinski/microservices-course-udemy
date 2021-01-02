@@ -190,3 +190,29 @@ jobs:
       - run: doctl kubernets cluster kubeconfig cluster_name
       - run: kubectl rollout restart deployment auth-depl
 ```
+
+Action to apply yaml files from infra k8s
+
+```
+# deploy-manifests.yaml
+
+name: deploy-manifests
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'infra/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      - run: doctl kubernets cluster kubeconfig cluster_name
+      - run: kubectl apply -f infra/k8s
+```
