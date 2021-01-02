@@ -118,6 +118,8 @@ Type `thisisunsafe` into Chrome to develop with http (not s)
 
 `kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf`: imperatively creates a generic jwt secret token with asdf as the string
 
+## NATS
+
 NATS streaming web UI
 
 - when connected to localhost port 8222
@@ -131,6 +133,8 @@ NATS args in k8s depl
 - hbf: how many times the client can fail before nats assumes that the connection is dead
 
 Only the primary service responsible for a record is responsible for incrementing the version number
+
+## CI
 
 GitHub Actions
 
