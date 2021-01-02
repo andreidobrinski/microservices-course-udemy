@@ -131,3 +131,20 @@ NATS args in k8s depl
 - hbf: how many times the client can fail before nats assumes that the connection is dead
 
 Only the primary service responsible for a record is responsible for incrementing the version number
+
+GitHub Actions
+
+Action to run tests
+
+```
+name: tests
+on:
+  pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd auth && npm install && npm run test:ci
+```
