@@ -147,4 +147,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: cd auth && npm install && npm run test:ci
+      # adding an additional run command runs them in series
+      # adding an additional gh-action makes them run in parallel
 ```
